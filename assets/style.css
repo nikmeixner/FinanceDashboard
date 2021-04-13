@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#grid_container_uno > H1 {
+    margin-top: 20px;
+}
+
+
+#grid_container {
+    padding-top: 100px;
+    display: grid;
+    columns: 3;
+    grid-template-columns: 20% 20% 60%;
+    grid-template-rows: auto auto auto;
+}
+
+
+
+#dropdowns{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#Chart_Dropdown_Container {
+    padding-top: 50px;
+}
+
+#stock_data_container {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    padding-top: 20px;
+}
+
+#stock_data_container > p {
+    padding: 5px;
+}
+
+#company_data_container {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#graph_container {
+    border: 1px solid black;
+    border-top: none;
+}

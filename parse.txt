@@ -1,0 +1,19 @@
+import pandas as pd
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output
+from pandas_datareader import data
+import plotly.express as px
+import requests
+import yfinance as yf
+import datetime as dt
+
+pd.core.common.is_list_like = pd.api.types.is_list_like
+
+today = dt.datetime.today().strftime('%Y-%m-%d')
+hist = (dt.datetime.today()-dt.timedelta(7)).strftime('%Y-%m-%d')
+
+df = data.DataReader('GOOG', 'yahoo', hist, today)
+
+print(df)
