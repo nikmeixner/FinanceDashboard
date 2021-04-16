@@ -283,8 +283,8 @@ def update_extendedc_data(ticker):
     rv = cd["financialData"]["recommendationKey"]
 
     #earning data
-    eepqv = cd["earnings"]['earningsChart']['quarterly'][-1]['estimate']['fmt']
-    aepqv = cd["earnings"]['earningsChart']['quarterly'][-1]['actual']['fmt']
+    #eepqv = cd["earnings"]['earningsChart']['quarterly'][-1]['estimate']['fmt']
+    #aepqv = cd["earnings"]['earningsChart']['quarterly'][-1]['actual']['fmt']
 
 
     return oycv, etev, etrv, pmv, adv3mv, adv3mv, rgv, opcv, fcv, trv, rv
@@ -310,9 +310,11 @@ def update_earnings(ticker):
     response = requests.request("GET", url, headers=headers, params=querystring)
     cd = response.json()
     if (ticker == "NLLSF"):
-        raise PreventUpdate
-    eepqv = cd["earnings"]['earningsChart']['quarterly'][-1]['estimate']['fmt']
-    aepqv = cd["earnings"]['earningsChart']['quarterly'][-1]['actual']['fmt']
+        eepqv = "no data"
+        aepqv = "no data"
+    else:
+        eepqv = cd["earnings"]['earningsChart']['quarterly'][-1]['estimate']['fmt']
+        aepqv = cd["earnings"]['earningsChart']['quarterly'][-1]['actual']['fmt']
 
     return eepqv, aepqv
 
