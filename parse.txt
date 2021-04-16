@@ -17,3 +17,90 @@ hist = (dt.datetime.today()-dt.timedelta(7)).strftime('%Y-%m-%d')
 df = data.DataReader('GOOG', 'yahoo', hist, today)
 
 print(df)
+
+
+html.Div([
+        html.Div([
+            html.P(id="ticker_name"),
+            html.Img(id="ticker_logo"),
+        ], className="ticker_header")
+        html.Div(id="description", className="description_ticker"),
+    ]),
+
+
+
+    style=dict(
+                    background = "#111111",
+                    color="white"),
+
+
+##--------------------------------------------------------
+##Callback for Stock Data
+#@app.callback(
+#    [Output("cp", "children"),
+#    Output("mc", "children"),
+#    Output("ff", "children"),
+#    Output("sv", "children"),
+#    Output("sr", "children"),
+#    Output("sv", "children")],
+#    [Input("ticker", "value")])
+##Function for updating Stock Data
+#def update_stock_data(ticker):
+#    stock_data = yf.download(ticker)
+#    daf = stock_data
+#    company = yf.Ticker(ticker)
+#    info = company.info
+#    cd = pd.DataFrame().from_dict(info, orient="index").T
+#    previousClose = cd[["previousClose"]].values[0]
+#    marketCap = cd[["marketCap"]].values[0]
+#    SharesShort = cd[['sharesShort']].values[0]
+#    heldPercentageInstitutions = cd[['heldPercentInstitutions']].values[0]
+#    shortRatio = cd[['shortRatio']].values[0]
+#    floatShare = cd[['floatShares']].values[0]
+#    impliedSharesOutstanding = cd[['impliedSharesOutstanding']].values[0]
+#    ebitda = cd[['enterpriseToEbitda']].values[0]
+#    return previousClose, marketCap, SharesShort, heldPercentageInstitutions, shortRatio, floatShare, impliedSharesOutstanding, ebitda   
+
+
+@app.callback(
+    [Output("news1_p", "children"),
+    Output("news2_p", "children"),
+    Output("news3_p", "children"),
+    Output("news4_p", "children"),
+    Output("url1_p", "children"),
+    Output("url2_p", "children"),
+    Output("url3_p", "children"),
+    Output("url4_p", "children")],
+    Input("ticker", "value")
+)
+
+html.P(children="52 Week Change: "),
+            html.P(id="52v", children="Value"),
+            html.P(children="Enterprise to Ebitda: "),
+            html.P(id="EtEv", children="Value"),
+            html.P(children="Enterprise to Revenue: "),
+            html.P(id="EtRv", children="Value"),
+            html.P(children="Profit Margins: "),
+            html.P(id="PMv", children="Value"),
+            
+            html.P(children="Average Daily Volume 3 Months: "),
+            html.P(id="adv3mv", children="Value"),
+            html.P(children="Average Daily Volume 10 Days: "),
+            html.P(id="adv10dv", children="Value"),
+            
+            html.P(children="Revenue Growth: "),
+            html.P(id="rgv", children="Value"),
+            html.P(children="Operating Cashflow: "),
+            html.P(id="opcv", children="Value"),
+            html.P(children="Free Cashflow: "),
+            html.P(id="fcv", children="Value"),
+            html.P(children="Total Revenue"),
+            html.P(id="trv", children="Value"),
+            
+            html.P(children="Recommendation"),
+            html.P(id="rv", children="Value"),
+            
+            html.P(children="Estimated earnings previous Q: "),
+            html.P(id="eepqv", children="Value"),
+            html.P(children="Actual earnings previous Q: "),
+            html.P(id="aepqv", children="Value"),

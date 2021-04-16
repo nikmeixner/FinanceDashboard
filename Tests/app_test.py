@@ -6,6 +6,7 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 import requests
 import yfinance as yf
+from yahoo_fin import stock_info as si
 import datetime as dt
 from pandas_datareader import data
 
@@ -14,7 +15,46 @@ pd.core.common.is_list_like = pd.api.types.is_list_like
 today = dt.datetime.today().strftime('%Y-%m-%d')
 hist = (dt.datetime.today()-dt.timedelta(7)).strftime('%Y-%m-%d')
 
-df = data.DataReader('GOOG', 'yahoo', hist, today)
+
+
+
+
+url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary"
+
+querystring = {"symbol":"NLLSF"}
+
+headers = {
+    'x-rapidapi-key': "58dd54d54amsh8adbafe422f4dbfp1bc21djsn1137a529195e",
+    'x-rapidapi-host': "apidojo-yahoo-finance-v1.p.rapidapi.com"
+    }
+
+response = requests.request("GET", url, headers=headers, params=querystring)
+cd = response.json()
+#defaultdata
+etrv = cd["defaultKeyStatistics"]['enterpriseToRevenue']['fmt']
+etev =cd["defaultKeyStatistics"]['enterpriseToEbitda']['fmt']
+pmv = cd["defaultKeyStatistics"]['profitMargins']['fmt']
+oycv = cd["defaultKeyStatistics"]['52WeekChange']['fmt']
+
+#Trading Volume Data
+adv3mv =  cd["price"]["averageDailyVolume3Month"]['fmt']
+adv10dv = cd["price"]["averageDailyVolume10Day"]['fmt']
+
+#financial Data
+rgv =  cd["financialData"]["revenueGrowth"]['fmt']
+opcv =  cd["financialData"]["operatingCashflow"]['fmt']
+fcv = cd["financialData"]["freeCashflow"]['fmt']
+trv = cd["financialData"]["totalRevenue"]['fmt']
+rv = cd["financialData"]["recommendationKey"]
+
+#earning data
+#eepqv = cd["earnings"]['earningsChart']['quarterly'][-1]['estimate']['fmt']
+#aepqv = cd["earnings"]['earningsChart']['quarterly'][-1]['actual']['fmt']
+
+print(etrv, etev, pmv, oycv, adv10dv, adv3mv, rgv, opcv, fcv, trv, rv)
+
+
+
 
 #--------------------------------------------------------
 #Dic for x-axis
