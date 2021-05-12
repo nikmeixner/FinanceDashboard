@@ -1,0 +1,7 @@
+venv *
+.pyc 
+.env 
+.DS_Store
+parse.txt
+toDo.txt
+Tests

@@ -14,6 +14,7 @@ from dash.exceptions import PreventUpdate
 external_stylesheets = ["style.css"]
 df = px.data.stocks()
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
 #make data.Datareader work
 pd.core.common.is_list_like = pd.api.types.is_list_like
 #-----------------------------------------------------
