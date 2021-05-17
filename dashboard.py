@@ -279,7 +279,7 @@ def update_extendedc_data(ticker):
     #financial Data
     rgv =  cd["financialData"]["revenueGrowth"]['fmt']
     opcv =  cd["financialData"]["operatingCashflow"]['fmt']
-    fcv = cd["financialData"]["freeCashflow"]['fmt']
+    #fcv = cd["financialData"]["freeCashflow"]['fmt']
     trv = cd["financialData"]["totalRevenue"]['fmt']
     rv = cd["financialData"]["recommendationKey"]
 
