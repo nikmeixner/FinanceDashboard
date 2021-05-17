@@ -6,7 +6,6 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 import requests
 import yfinance as yf
-from yahoo_fin import stock_info as si
 import datetime as dt
 from pandas_datareader import data
 
